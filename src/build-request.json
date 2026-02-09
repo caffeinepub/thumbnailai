@@ -1,0 +1,254 @@
+{
+  "kind": "build_request",
+  "title": "Implement ThumbnailAI single-page thumbnail generator with live preview, presets, templates, export, and Internet Identity sign-in",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Build a responsive single-page UI for “ThumbnailAI” that matches the provided HTML’s information architecture: sticky header (logo + nav + sign-in), a 2-column main area (Thumbnail Preview + Customize panel) that collapses to 1 column on smaller screens, a “Why Choose ThumbnailAI?” features grid, and a footer with links.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "<!DOCTYPE html> ... <title>ThumbnailAI - AI YouTube Thumbnail Generator</title> ..."
+        ]
+      },
+      "acceptanceCriteria": [
+        "On desktop widths, the main content is a two-column layout with Preview on the left and Customize on the right.",
+        "On narrow widths, the layout becomes a single column; header nav collapses behind a mobile menu toggle.",
+        "The page includes: header, preview section, customization section, features section, and footer sections with the same labels as the provided HTML (in English)."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement the Thumbnail Preview canvas component that renders a 16:9 thumbnail preview and updates live when the user changes: video title, channel name, selected style, or selected/preset background.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Thumbnail Preview ... <div class=\"thumbnail-canvas\" id=\"thumbnailCanvas\">",
+          "Video Title ... Channel Name ... Thumbnail Style"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Typing in “Video Title” immediately updates the preview title text.",
+        "Typing in “Channel Name” immediately updates the preview channel name and the channel logo initial (first letter uppercased).",
+        "The preview maintains a 16:9 aspect ratio and is visually centered within its container.",
+        "Preview uses a background that can be changed by randomize/generate/preset actions (e.g., gradients)."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Implement thumbnail style selection with the following options: modern, minimal, bold, bright, dark, gradient. The selected style must be visibly highlighted and must change the preview text styling to match the behaviors from the provided script (e.g., font size/weight, shadows, color, and gradient text for “gradient”).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Thumbnail Style ... data-style=\"modern|minimal|bold|bright|dark|gradient\"",
+          "function applyStyleToThumbnail(...) { ... switch(currentStyle) { ... } }"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking a style option updates the active state indicator and updates the preview styling.",
+        "The “gradient” style renders the title text as a visible text gradient (not a background block).",
+        "The “dark” style renders title text darker with a lighter shadow effect, as in the provided script’s intent."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement “AI Suggestions” preset cards (clickbait, educational, gaming, vlog). Clicking a preset must apply a specific background gradient + style + title text update consistent with the provided HTML/JS logic.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "AI Suggestions ... data-suggestion=\"clickbait|educational|gaming|vlog\"",
+          "function applySuggestion(type) { switch(type) { ... } }"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking each preset updates: background, selected style, and video title to the preset’s values.",
+        "The UI provides a non-blocking notification (toast or inline message) that a preset was applied (avoid using browser alert)."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Implement “Generate with AI” as a simulated generation action: show a loading overlay on the preview area, wait ~1.5s, then randomize background and style and pick a title from a predefined list (as in the provided script).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Generate with AI ... aiLoading ... setTimeout(() => { ... }, 1500);"
+        ]
+      },
+      "acceptanceCriteria": [
+        "When clicking “Generate with AI”, a loading overlay appears on top of the preview and blocks interactions with preview controls until completion.",
+        "After the delay, a new randomized background/style/title are applied and the overlay disappears.",
+        "A success confirmation is shown using an in-app UI element (toast/inline), not browser alert."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Implement “Randomize” to immediately randomize background + style + title (from a predefined list) and update the active style indicator, matching the provided script behavior.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Randomize button ... Random background ... Random style ... Random title ... updateThumbnail();"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking “Randomize” changes the preview background, style, and title without any loading overlay.",
+        "The selected style UI updates to match the randomized style."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Implement “Download Thumbnail” to export the currently rendered thumbnail as a real PNG at 1280x720 (16:9) on the client (no alert/screenshot instruction).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Download Thumbnail ... Download thumbnails in 1280x720px ... (currently demo alert)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking “Download Thumbnail” downloads a .png file.",
+        "The exported image resolution is 1280x720 and visually matches the preview (background + title + channel info).",
+        "While exporting, the download button shows a disabled/loading state and then returns to normal."
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Implement a responsive header navigation with a mobile menu toggle that shows/hides the nav items and switches the toggle icon state, mirroring the provided HTML behavior.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Mobile menu toggle ... mainNav.classList.toggle('active') ... icon class bars/times"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On small screens, the nav is hidden until the menu button is toggled.",
+        "Toggling the menu changes the menu button’s visual state (open vs closed).",
+        "On larger screens, the nav is always visible."
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Add Internet Identity sign-in/sign-out via the existing template hooks (without editing any immutable hook files). Replace the “Sign In” placeholder alert with actual authentication UI behavior.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Sign In ... (currently placeholder alert)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking “Sign In” triggers an Internet Identity login flow.",
+        "After login, the header shows an authenticated state (e.g., “Sign out” and/or the user principal/account indicator).",
+        "Clicking “Sign out” ends the session and returns the UI to the signed-out state."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Implement “Templates” functionality: allow signed-in users to save the current thumbnail configuration as a named template, list saved templates, apply a saved template to the editor/preview, and delete templates.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Templates feature: save favorite designs as reusable templates (UI link present)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Signed-in users can save the current configuration (title, channel name, style, background) as a template with a user-provided name.",
+        "The app shows a list/grid of saved templates for the signed-in user.",
+        "Clicking a saved template applies it to the preview and updates editor inputs + selected style.",
+        "Users can delete a saved template; it disappears from the list without a page refresh.",
+        "Signed-out users can see a call-to-action to sign in to use templates and cannot persist templates."
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Backend: add Motoko canister methods and stable storage for per-user templates keyed by Principal, including create/list/delete operations needed by the frontend.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Templates feature: save favorite designs as reusable templates (UI link present)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend exposes methods to: create template, list templates for caller, delete template owned by caller.",
+        "Templates are persisted in stable storage so they remain after canister upgrade/redeploy (within standard IC upgrade behavior).",
+        "Unauthorized deletion attempts (template not owned by caller) are rejected."
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Visual theme: apply a cohesive dark, YouTube-inspired theme (near-black surfaces + red accent) using Tailwind styling with consistent spacing, typography scale, and component states (hover/active/disabled) across the app (avoid blue/purple as the primary palette).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "background-color: #0f0f0f ... color: #ff0000 ... dark UI styling"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The app uses a consistent dark theme with red accent across header, cards, buttons, and interactive states.",
+        "Typography and spacing are consistent across sections; cards and buttons have clear hover/focus styles.",
+        "Primary actions (Generate/Download/Sign In) are visually distinct from secondary actions (Randomize)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Use English for all user-facing text.",
+    "Frontend must use React + TypeScript + Tailwind + React Query per template conventions.",
+    "Do not edit files under frontend/src/components/ui or other paths marked immutable in SYSTEM_CONTEXT (compose them instead).",
+    "Backend must remain a single Motoko actor (all logic in backend/main.mo); only add migration.mo if state upgrade requires it.",
+    "Do not add real external AI/LLM integrations; “AI” generation must remain simulated/randomized unless explicitly requested later."
+  ],
+  "nonGoals": [
+    "Implementing real AI image generation or calling third-party AI services.",
+    "Integrating third-party authentication providers other than Internet Identity.",
+    "Adding real-time collaboration or WebSocket-based features.",
+    "Adding external databases or non-IC storage solutions."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

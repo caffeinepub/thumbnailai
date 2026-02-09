@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Build \"ThumbnailAI\", a responsive single-page web app for generating YouTube thumbnails with a live preview, style customization, AI-style suggestions, randomization, and download/export.",
+  "architectural_notes": [
+    "Single-page HTML/CSS/JS front-end with live DOM-based thumbnail rendering inside a preview container.",
+    "Uses Font Awesome via CDN for icons.",
+    "\"AI\" generation and download are currently simulated client-side (setTimeout + alerts); backgrounds use CSS gradients."
+  ],
+  "known_issues": [
+    "Download/export is not actually implemented (currently an alert suggesting screenshot).",
+    "AI generation is a simulation (random choices + delay) rather than a real AI/image generation backend.",
+    "Sign-in is a placeholder (alert) with no real authentication or modal."
+  ],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-build-a-responsive-single-page-ui-for-thumbnailai-that-matches-the-provided-html-s-information-architecture-sticky-header-logo-nav-sign-in-a-2-column-main-area-thumbnail-preview-customize-panel-that-collapses-to-1-column-on-smaller-screens-a-why-choose-thumbnailai-features-grid-and-a-footer-with-links",
+      "title": "Build a responsive single-page UI for “ThumbnailAI” that matches the provided HTML’s information architecture: sticky header (logo + nav + sign-in), a 2-column main area (Thumbnail Preview + Customize panel) that collapses to 1 column on smaller screens, a “Why Choose ThumbnailAI?” features grid, and a footer with links.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-thumbnail-preview-canvas-component-that-renders-a-16-9-thumbnail-preview-and-updates-live-when-the-user-changes-video-title-channel-name-selected-style-or-selected-preset-background",
+      "title": "Implement the Thumbnail Preview canvas component that renders a 16:9 thumbnail preview and updates live when the user changes: video title, channel name, selected style, or selected/preset background.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-thumbnail-style-selection-with-the-following-options-modern-minimal-bold-bright-dark-gradient-the-selected-style-must-be-visibly-highlighted-and-must-change-the-preview-text-styling-to-match-the-behaviors-from-the-provided-script-e-g-font-size-weight-shadows-color-and-gradient-text-for-gradient",
+      "title": "Implement thumbnail style selection with the following options: modern, minimal, bold, bright, dark, gradient. The selected style must be visibly highlighted and must change the preview text styling to match the behaviors from the provided script (e.g., font size/weight, shadows, color, and gradient text for “gradient”).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-ai-suggestions-preset-cards-clickbait-educational-gaming-vlog-clicking-a-preset-must-apply-a-specific-background-gradient-style-title-text-update-consistent-with-the-provided-html-js-logic",
+      "title": "Implement “AI Suggestions” preset cards (clickbait, educational, gaming, vlog). Clicking a preset must apply a specific background gradient + style + title text update consistent with the provided HTML/JS logic.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-generate-with-ai-as-a-simulated-generation-action-show-a-loading-overlay-on-the-preview-area-wait-1-5s-then-randomize-background-and-style-and-pick-a-title-from-a-predefined-list-as-in-the-provided-script",
+      "title": "Implement “Generate with AI” as a simulated generation action: show a loading overlay on the preview area, wait ~1.5s, then randomize background and style and pick a title from a predefined list (as in the provided script).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-randomize-to-immediately-randomize-background-style-title-from-a-predefined-list-and-update-the-active-style-indicator-matching-the-provided-script-behavior",
+      "title": "Implement “Randomize” to immediately randomize background + style + title (from a predefined list) and update the active style indicator, matching the provided script behavior.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-download-thumbnail-to-export-the-currently-rendered-thumbnail-as-a-real-png-at-1280x720-16-9-on-the-client-no-alert-screenshot-instruction",
+      "title": "Implement “Download Thumbnail” to export the currently rendered thumbnail as a real PNG at 1280x720 (16:9) on the client (no alert/screenshot instruction).",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-responsive-header-navigation-with-a-mobile-menu-toggle-that-shows-hides-the-nav-items-and-switches-the-toggle-icon-state-mirroring-the-provided-html-behavior",
+      "title": "Implement a responsive header navigation with a mobile menu toggle that shows/hides the nav items and switches the toggle icon state, mirroring the provided HTML behavior.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-internet-identity-sign-in-sign-out-via-the-existing-template-hooks-without-editing-any-immutable-hook-files-replace-the-sign-in-placeholder-alert-with-actual-authentication-ui-behavior",
+      "title": "Add Internet Identity sign-in/sign-out via the existing template hooks (without editing any immutable hook files). Replace the “Sign In” placeholder alert with actual authentication UI behavior.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-templates-functionality-allow-signed-in-users-to-save-the-current-thumbnail-configuration-as-a-named-template-list-saved-templates-apply-a-saved-template-to-the-editor-preview-and-delete-templates",
+      "title": "Implement “Templates” functionality: allow signed-in users to save the current thumbnail configuration as a named template, list saved templates, apply a saved template to the editor/preview, and delete templates.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-visual-theme-apply-a-cohesive-dark-youtube-inspired-theme-near-black-surfaces-red-accent-using-tailwind-styling-with-consistent-spacing-typography-scale-and-component-states-hover-active-disabled-across-the-app-avoid-blue-purple-as-the-primary-palette",
+      "title": "Visual theme: apply a cohesive dark, YouTube-inspired theme (near-black surfaces + red accent) using Tailwind styling with consistent spacing, typography scale, and component states (hover/active/disabled) across the app (avoid blue/purple as the primary palette).",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Thumbnail preview canvas that updates live based on inputs (title, channel name, background, style)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Customization controls: video title + channel name inputs and selectable thumbnail styles (modern/minimal/bold/bright/dark/gradient)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "AI Suggestions presets (clickbait/educational/gaming/vlog) that apply background/style/title changes",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Generate with AI action with loading state (simulated processing) that produces a new randomized thumbnail design",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Randomize button to randomize background/style/title and refresh preview",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Download/export thumbnail feature (target export 1280x720 PNG)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Responsive header navigation with mobile menu toggle",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Templates feature: save favorite designs as reusable templates (UI link present)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Sign-in flow entry point (button) with modal/auth integration (currently placeholder)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "Backend: add Motoko canister methods and stable storage for per-user templates keyed by Principal, including create/list/delete operations needed by the frontend.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "ThumbnailAI",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

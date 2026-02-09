@@ -1,0 +1,231 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-build-a-responsive-single-page-ui-for-thumbnailai-that-matches-the-provided-html-s-information-architecture-sticky-header-logo-nav-sign-in-a-2-column-main-area-thumbnail-preview-customize-panel-that-collapses-to-1-column-on-smaller-screens-a-why-choose-thumbnailai-features-grid-and-a-footer-with-links",
+      "featureTitle": "Build a responsive single-page UI for “ThumbnailAI” that matches the provided HTML’s information architecture: sticky header (logo + nav + sign-in), a 2-column main area (Thumbnail Preview + Customize panel) that collapses to 1 column on smaller screens, a “Why Choose ThumbnailAI?” features grid, and a footer with links.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/layout/Footer.tsx",
+        "frontend/src/components/layout/Header.tsx",
+        "frontend/src/components/sections/FeaturesSection.tsx",
+        "frontend/src/components/sections/GeneratorSection.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-the-thumbnail-preview-canvas-component-that-renders-a-16-9-thumbnail-preview-and-updates-live-when-the-user-changes-video-title-channel-name-selected-style-or-selected-preset-background",
+      "featureTitle": "Implement the Thumbnail Preview canvas component that renders a 16:9 thumbnail preview and updates live when the user changes: video title, channel name, selected style, or selected/preset background.",
+      "files": [
+        "frontend/src/lib/thumbnail/backgrounds.ts",
+        "frontend/src/lib/thumbnail/renderThumbnail.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-thumbnail-style-selection-with-the-following-options-modern-minimal-bold-bright-dark-gradient-the-selected-style-must-be-visibly-highlighted-and-must-change-the-preview-text-styling-to-match-the-behaviors-from-the-provided-script-e-g-font-size-weight-shadows-color-and-gradient-text-for-gradient",
+      "featureTitle": "Implement thumbnail style selection with the following options: modern, minimal, bold, bright, dark, gradient. The selected style must be visibly highlighted and must change the preview text styling to match the behaviors from the provided script (e.g., font size/weight, shadows, color, and gradient text for “gradient”).",
+      "files": [
+        "frontend/src/components/customize/StyleSelector.tsx",
+        "frontend/src/lib/thumbnail/renderThumbnail.ts",
+        "frontend/src/lib/thumbnail/styles.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-ai-suggestions-preset-cards-clickbait-educational-gaming-vlog-clicking-a-preset-must-apply-a-specific-background-gradient-style-title-text-update-consistent-with-the-provided-html-js-logic",
+      "featureTitle": "Implement “AI Suggestions” preset cards (clickbait, educational, gaming, vlog). Clicking a preset must apply a specific background gradient + style + title text update consistent with the provided HTML/JS logic.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/customize/AISuggestions.tsx",
+        "frontend/src/lib/thumbnail/suggestions.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-generate-with-ai-as-a-simulated-generation-action-show-a-loading-overlay-on-the-preview-area-wait-1-5s-then-randomize-background-and-style-and-pick-a-title-from-a-predefined-list-as-in-the-provided-script",
+      "featureTitle": "Implement “Generate with AI” as a simulated generation action: show a loading overlay on the preview area, wait ~1.5s, then randomize background and style and pick a title from a predefined list (as in the provided script).",
+      "files": [
+        "frontend/src/components/customize/GenerateControls.tsx",
+        "frontend/src/components/preview/PreviewFrame.tsx",
+        "frontend/src/lib/thumbnail/titles.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-randomize-to-immediately-randomize-background-style-title-from-a-predefined-list-and-update-the-active-style-indicator-matching-the-provided-script-behavior",
+      "featureTitle": "Implement “Randomize” to immediately randomize background + style + title (from a predefined list) and update the active style indicator, matching the provided script behavior.",
+      "files": [
+        "frontend/src/components/customize/GenerateControls.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-download-thumbnail-to-export-the-currently-rendered-thumbnail-as-a-real-png-at-1280x720-16-9-on-the-client-no-alert-screenshot-instruction",
+      "featureTitle": "Implement “Download Thumbnail” to export the currently rendered thumbnail as a real PNG at 1280x720 (16:9) on the client (no alert/screenshot instruction).",
+      "files": [
+        "frontend/src/components/sections/GeneratorSection.tsx",
+        "frontend/src/lib/thumbnail/exportPng.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-responsive-header-navigation-with-a-mobile-menu-toggle-that-shows-hides-the-nav-items-and-switches-the-toggle-icon-state-mirroring-the-provided-html-behavior",
+      "featureTitle": "Implement a responsive header navigation with a mobile menu toggle that shows/hides the nav items and switches the toggle icon state, mirroring the provided HTML behavior.",
+      "files": [
+        "frontend/src/components/layout/Header.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-internet-identity-sign-in-sign-out-via-the-existing-template-hooks-without-editing-any-immutable-hook-files-replace-the-sign-in-placeholder-alert-with-actual-authentication-ui-behavior",
+      "featureTitle": "Add Internet Identity sign-in/sign-out via the existing template hooks (without editing any immutable hook files). Replace the “Sign In” placeholder alert with actual authentication UI behavior.",
+      "files": [
+        "frontend/src/components/auth/AuthButton.tsx",
+        "frontend/src/components/layout/Header.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-templates-functionality-allow-signed-in-users-to-save-the-current-thumbnail-configuration-as-a-named-template-list-saved-templates-apply-a-saved-template-to-the-editor-preview-and-delete-templates",
+      "featureTitle": "Implement “Templates” functionality: allow signed-in users to save the current thumbnail configuration as a named template, list saved templates, apply a saved template to the editor/preview, and delete templates.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/auth/AuthButton.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-visual-theme-apply-a-cohesive-dark-youtube-inspired-theme-near-black-surfaces-red-accent-using-tailwind-styling-with-consistent-spacing-typography-scale-and-component-states-hover-active-disabled-across-the-app-avoid-blue-purple-as-the-primary-palette",
+      "featureTitle": "Visual theme: apply a cohesive dark, YouTube-inspired theme (near-black surfaces + red accent) using Tailwind styling with consistent spacing, typography scale, and component states (hover/active/disabled) across the app (avoid blue/purple as the primary palette).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/customize/GenerateControls.tsx",
+        "frontend/src/components/customize/StyleSelector.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

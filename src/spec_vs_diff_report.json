@@ -1,0 +1,93 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-09T08:18:13.577Z",
+  "summary": "Frontend implements a single-page ThumbnailAI UI with generator (preview+customize), features, templates section, footer, dark/red theme, AI suggestions, simulated generate/randomize, PNG download, and Internet Identity auth button. However, backend template persistence/upgrade safety is not evidenced, and template application likely does not update the main editor due to separate editor instances. Diff also introduces additional backend authorization and shape/config machinery not requested.",
+  "missing_requirements": [
+    {
+      "id": "REQ-10",
+      "requirement": "Applying a saved template must apply it to the editor/preview and update editor inputs + selected style (without page refresh).",
+      "reason": "TemplatesSection creates its own independent thumbnail editor state (useThumbnailEditor()) instead of sharing the generator’s editor state, so applying a template likely updates only a separate state and not the actual generator preview/inputs.",
+      "evidence": [
+        "frontend/src/components/sections/TemplatesSection.tsx",
+        "frontend/src/components/sections/GeneratorSection.tsx"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "requirement": "Templates must be persisted in stable storage across canister upgrades/redeploys, with per-user CRUD keyed by Principal.",
+      "reason": "backend/main.mo shows an in-memory Map store (userTemplatesStore = Map.empty<Principal, List.List<Template>>()) with no stable var / stable data structure / postupgrade-preupgrade migration evidenced in the shown diff. Persistence across upgrades is not demonstrated.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Backend introduces a complex thumbnail 'Shape' and 'ThumbnailConfig' model (shapes, borders, rotation, etc.) and merge helpers not requested by the BuildRequest.",
+      "reason": "REQ-11 only calls for per-user templates storing title/channel/style/background and CRUD operations; the added generalized shape/config model goes beyond requested scope.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "Backend adds AccessControl/MixinAuthorization with secret-based initialization behavior on the frontend actor creation path.",
+      "reason": "The BuildRequest does not request implementing an authorization/roles subsystem or secret token initialization; only Internet Identity sign-in/sign-out and per-user ownership enforcement for templates were required.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/hooks/useActor.ts"
+      ]
+    },
+    {
+      "description": "Backend adds extra API method getTemplate(id) not requested.",
+      "reason": "REQ-11 requires create/list/delete for caller; a single-template fetch endpoint was not requested.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "Marketing copy implies real AI analysis of millions of videos and 'advanced AI', which conflicts with the constraint that AI must remain simulated/randomized (no real integrations).",
+      "reason": "While not code integration, this user-facing text suggests real AI capabilities that the spec explicitly disallows unless later requested.",
+      "evidence": [
+        "frontend/src/components/sections/FeaturesSection.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.72,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/auth/AuthButton.tsx",
+    "frontend/src/components/customize/AISuggestions.tsx",
+    "frontend/src/components/customize/CustomizePanel.tsx",
+    "frontend/src/components/customize/GenerateControls.tsx",
+    "frontend/src/components/customize/SaveTemplateDialog.tsx",
+    "frontend/src/components/customize/StyleSelector.tsx",
+    "frontend/src/components/layout/Footer.tsx",
+    "frontend/src/components/layout/Header.tsx",
+    "frontend/src/components/preview/PreviewFrame.tsx",
+    "frontend/src/components/preview/ThumbnailCanvas.tsx",
+    "frontend/src/components/sections/FeaturesSection.tsx",
+    "frontend/src/components/sections/GeneratorSection.tsx",
+    "frontend/src/components/sections/TemplatesSection.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useTemplates.ts",
+    "frontend/src/hooks/useThumbnailEditor.ts",
+    "frontend/src/index.css",
+    "frontend/src/lib/thumbnail/backgrounds.ts",
+    "frontend/src/lib/thumbnail/exportPng.ts",
+    "frontend/src/lib/thumbnail/renderThumbnail.ts",
+    "frontend/src/lib/thumbnail/styles.ts",
+    "frontend/src/lib/thumbnail/suggestions.ts",
+    "frontend/src/lib/thumbnail/titles.ts",
+    "frontend/src/main.tsx",
+    "frontend/src/utils/urlParams.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}
